@@ -22,11 +22,13 @@
 <body>
   <div id="content-header">
     <div class="padding">
-      <h1 class="ms-font-xl ms-fontWeight-light ms-fontColor-white">Insert text</h1>
+      <h1 class="ms-font-xl ms-fontWeight-light ms-fontColor-white">Content Header</h1>
     </div>
   </div>
+  
   <div id="content-main" class="ms-Grid">
     <div class="ms-Grid-row">
+      <!--
       <div class="ms-Grid-col ms-u-sm12">
         <div class="ms-Grid">
           <div class="ms-Grid-row">
@@ -64,28 +66,56 @@
           </div>
         </div>
       </div>
+    -->
     </div>
     
     <div class="ms-Grid-row">
       <div class="ms-Grid-col ms-u-sm12">
         <div class="ms-Grid">
+          <!--
           <div class="ms-Grid-row">
             <div class="ms-Grid-col ms-u-sm12">
               <h2 class="ms-font-l">Custom text</h2>
             </div>
           </div>
+          -->
+          <div class="ms-Grid-row">
+            <div class="ms-Grid-col ms-u-sm12">
+              <label class="ms-Label">挿入位置:</label>
+              <div class="ms-ChoiceFieldGroup">
+                <div class="ms-Grid-col ms-u-sm6 ms-u-md6 ms-u-lg6">
+                  <div class="ms-ChoiceField ms-Grid-col">
+                    <input id="radioTop" class="ms-ChoiceField-input" type="radio" value="top" name="insertPosition" checked>
+                    <label for="radioTop" class="ms-ChoiceField-field">
+                      <span class="ms-Label">先頭</span>
+                    </label>
+                  </div>
+                </div>
+                 
+                <div class="ms-Grid-col ms-u-sm6 ms-u-md6 ms-u-lg6">
+                  <div class="ms-ChoiceField ms-Grid-col">
+                    <input id="radioBottom" class="ms-ChoiceField-input" type="radio" value="bottom" name="insertPosition">
+                    <label for="radioBottom" class="ms-ChoiceField-field">
+                      <span class="ms-Label">末尾</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
           <div class="ms-Grid-row">
             <div class="ms-Grid-col ms-u-sm12">
               <div class="ms-TextField">
-                <label class="ms-Label">Text to insert:</label>
-                <input id="textToInsert" class="ms-TextField-field" />
-                <span class="ms-TextField-description">Enter the text you want to insert here.</span>
+                <label class="ms-Label">引用符:</label>
+                <input id="textQuotePrefix" class="ms-TextField-field" value="> "/>
+                <span class="ms-TextField-description">テキストの先頭に付加するテキスト</span>
               </div>
             </div>
           </div>
           <div class="ms-Grid-row">
             <div class="ms-Grid-col ms-u-sm12">
-              <button id="insertCustom" class="ms-Button">
+              <button id="doQuote" class="ms-Button">
                 <span class="ms-Button-label">Insert</span>
                 <span class="ms-Button-description">Inserts the text entered into the body of the message.</span>
               </button>

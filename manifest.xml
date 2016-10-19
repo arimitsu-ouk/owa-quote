@@ -7,11 +7,11 @@
   xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
   xsi:type="MailApp">
   <Id>7164e750-dc86-49c0-b548-1bac57abdc7c</Id>
-  <Version>1.0.0.1</Version>
+  <Version>1.0.0.0</Version>
   <ProviderName>Y.Arimitsu</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="OWA Quote App" />
-  <Description DefaultValue="選択部分に引用符を付けてメール本文に挿入するよアドイン"/>
+  <Description DefaultValue="選択部分に引用符を付けてメール本文に挿入するアドイン"/>
   <IconUrl DefaultValue="https://owa-quote.azurewebsites.net/images/blue-64.png" />
   <HighResolutionIconUrl DefaultValue="https://owa-quote.azurewebsites.net/images/blue-80.png" />
   <Hosts>

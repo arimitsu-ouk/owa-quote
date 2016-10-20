@@ -12,8 +12,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="OWA Quote App" />
   <Description DefaultValue="選択部分に引用符を付けてメール本文に挿入するアドイン"/>
-  <IconUrl DefaultValue="https://owa-quote.azurewebsites.net/images/blue-64.png" />
-  <HighResolutionIconUrl DefaultValue="https://owa-quote.azurewebsites.net/images/blue-80.png" />
+  <IconUrl DefaultValue="https://owa-quote.azurewebsites.net/images/inyo-64.png" />
+  <HighResolutionIconUrl DefaultValue="https://owa-quote.azurewebsites.net/images/inyo-80.png" />
   <Hosts>
     <Host Name="Mailbox" />
   </Hosts>
@@ -96,6 +96,10 @@
         <bt:Image id="green-icon-16" DefaultValue="https://owa-quote.azurewebsites.net/images/green-16.png"/>
         <bt:Image id="green-icon-32" DefaultValue="https://owa-quote.azurewebsites.net/images/green-32.png"/>
         <bt:Image id="green-icon-80" DefaultValue="https://owa-quote.azurewebsites.net/images/green-80.png"/>
+        <!-- Inyo icon -->
+        <bt:Image id="inyo-icon-16" DefaultValue="https://owa-quote.azurewebsites.net/images/inyo-16.png"/>
+        <bt:Image id="inyo-icon-32" DefaultValue="https://owa-quote.azurewebsites.net/images/inyo-32.png"/>
+        <bt:Image id="inyo-icon-80" DefaultValue="https://owa-quote.azurewebsites.net/images/inyo-80.png"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="functionFile" DefaultValue="https://owa-quote.azurewebsites.net/FunctionFile/Functions.html"/>

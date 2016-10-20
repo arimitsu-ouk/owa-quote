@@ -79,6 +79,7 @@
     } else {
       // 末尾
       var sep = "________________________________________";
+      var sep2 = "-----Original Message-----";
       var r = separateBody(bodyLines, sep);
       
       body = body.concat(r.before).concat(quoteLines).concat(r.after);

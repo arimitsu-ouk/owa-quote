@@ -11,6 +11,7 @@
           app.initialize();
 
           $('#insertText').click(insertText);
+          $('#doQuote').click(doQuote);
       });
   };
   
@@ -31,6 +32,92 @@
         }
       });
   }
+  
+  function separateBody(bodyLines, separator) {
+    var idx = 0;
+    for(;idx < bodyLines.length ; idx++) {
+      if(bodyLines[idx].indexOf(separator) != -1) {
+        break;
+      }
+    }
+    
+    return {
+      before : bodyLines.slice(0, idx),
+      after : bodyLines.slice(idx)
+    };
+  }
+ 
+  function insertQuote(quoteLines, bodyLines, insertTop) {
+    var body = [];
+    
+    if(insertTop) {
+      // 先頭
+      body = quoteLines.concat(bodyLines);
+    } else {
+      // 末尾
+      //var sep = "________________________________________";
+      var sep = "-----Original Message-----";
+      var r = separateBody(bodyLines, sep);
+      
+      body = body.concat(r.before).concat(quoteLines).concat(r.after);
+    }
+    
+    
+    
+    // 更新
+    Office.context.mailbox.item.body.setAsync(
+      body.join('\n'),
+      { coercionType: Office.CoercionType.Text },
+      function(asyncResult) {
+        if (asyncResult.status == Office.AsyncResultStatus.Succeeded) {
+          app.showNotification("Success", "成功しました。多分。");
+        } else {
+          app.showNotification("Error", "Failed to paste: " + asyncResult.error.message);
+        }
+      });
+  }
+  
+  function doQuote() {
+    var textQuotePrefix = $('#textQuotePrefix').val();
+    var insertTop = $("#radioTop").prop('checked');
+    
+    Office.context.mailbox.item.getSelectedDataAsync(
+      Office.CoercionType.Text, // デスクトップ版は Text みたい・・・
+      this,
+      function(asyncResult) {
+        if (asyncResult.status == Office.AsyncResultStatus.Succeeded) {
+          if(asyncResult.value.sourceProperty !== "body" || asyncResult.value.data === "") {
+            app.showNotification("Error", "引用部分を選択してください");
+            return;
+          }
+          
+          var quoteLines = asyncResult.value.data.split(/\r\n|\r|\n/);
+          quoteLines = quoteLines.map(function(value) {
+            return textQuotePrefix + value;
+          });
+          //console.log("quoteLines : %O", quoteLines);
+          
+          Office.context.mailbox.item.body.getAsync(
+            Office.CoercionType.Text,  // デスクトップ版は Text みたい・・・
+            {},
+            function(asyncResult) {
+              if (asyncResult.status == Office.AsyncResultStatus.Succeeded) {
+                var bodyLines = asyncResult.value.split(/\r\n|\r|\n/);
+                //console.log("bodyLines : %O", bodyLines);
+                insertQuote(quoteLines, bodyLines, insertTop);
+              } else {
+                app.showNotification("Error", "Failed to quote: " + asyncResult.error.message);
+              }
+            }
+          );          
+        }
+        else {
+          app.showNotification("Error", "Failed to quote: " + asyncResult.error.message);
+        }
+      }
+    );
+  }
+  
 })();
 
 // MIT License: 
